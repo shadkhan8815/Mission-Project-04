@@ -1,0 +1,73 @@
+package in.co.rays.test;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+import in.co.rays.bean.StudentBean;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.exception.RecordNotFoundException;
+import in.co.rays.model.StudentModel;
+
+public class TestStudentModel {
+	
+	public static void main(String[] args) throws RecordNotFoundException, Exception {
+		
+		//testNextPk();
+		//testAdd();
+		testUpdate();
+	}
+//------------------------------------------------------------
+	
+public static void testNextPk() throws DatabaseException {	
+	
+	StudentModel model = new StudentModel();
+	
+	int i = model.nextPK();
+	
+	System.out.println("Next pk is => " + i);
+}
+//------------------------------------------------------------------------
+
+public static void testAdd() throws RecordNotFoundException, Exception {
+	
+	StudentBean bean = new StudentBean();
+	
+	bean.setFirstName("abhishek");
+    bean.setLastName("meena");
+    bean.setDob(new Date());
+    bean.setGender("male");
+    bean.setMobileNo("873124246");
+    bean.setEmail("abc@gmail.com");
+    bean.setCollegeId(1);
+    bean.setCreatedBy("Admin");
+    bean.setModifiedBy("Admin");
+    bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+    bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+    
+    StudentModel model = new StudentModel();
+    model.add(bean);
+}
+//------------------------------------------------------------------
+
+public static void testUpdate() throws RecordNotFoundException, Exception {
+	
+	StudentBean bean = new StudentBean();
+	
+	bean.setId(1);
+	bean.setFirstName("rahul");
+    bean.setLastName("malviya");
+    bean.setDob(new Date());
+    bean.setGender("male");
+    bean.setMobileNo("873124246");
+    bean.setEmail("abc@gmail.com");
+    bean.setCollegeId(1);
+    bean.setCreatedBy("Admin");
+    bean.setModifiedBy("Admin");
+    bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+    bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+    
+	StudentModel model = new StudentModel();
+	  model.update(bean);
+}
+
+}

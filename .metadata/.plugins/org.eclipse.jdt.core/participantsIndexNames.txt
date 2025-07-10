@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+D:\Project-04\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1677276124.index
+\project-04\src\main\resources
+D:\Project-04\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3962340205.index
+\Project-04\src\main\resources

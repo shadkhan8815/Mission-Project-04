@@ -1,0 +1,52 @@
+package in.co.rays.test;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import in.co.rays.bean.StudentBean;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.exception.RecordNotFoundException;
+import in.co.rays.model.StudentModel;
+
+public class TestStudentModel {
+	
+	public static void main(String[] args) throws RecordNotFoundException, Exception {
+		
+		//testNextPk();
+		testAdd();
+	}
+//------------------------------------------------------------
+	
+public static void testNextPk() throws DatabaseException {	
+	
+	StudentModel model = new StudentModel();
+	
+	int i = model.nextPK();
+	
+	System.out.println("Next pk is => " + i);
+}
+//------------------------------------------------------------------------
+
+public static void testAdd() throws RecordNotFoundException, Exception {
+	
+	StudentBean bean = new StudentBean();
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	
+	bean.setFirstName("Chrayu");
+    bean.setLastName("indore");
+    bean.setDob(sdf.parse("05-06-2003"));
+    bean.setGender("indore");
+    bean.setMobileNo("073124246");
+    bean.setCollegeId(1);
+    bean.setCreatedBy("Admin");
+    bean.setModifiedBy("Admin");
+    bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+    bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+    
+    StudentModel model = new StudentModel();
+    model.add(bean);
+}
+
+}

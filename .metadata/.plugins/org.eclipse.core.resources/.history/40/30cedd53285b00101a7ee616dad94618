@@ -1,0 +1,51 @@
+package in.co.rays.test;
+
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
+
+import in.co.rays.bean.CollegeBean;
+import in.co.rays.exception.ApplicationException;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.exception.DuplicateRecordException;
+import in.co.rays.exception.RecordNotFoundException;
+import in.co.rays.model.CollegeModel;
+
+public class TestCollegeModel {
+	
+	public static void main(String[] args) throws Exception, Exception {
+		
+		TestNextPk();
+		
+	}
+//--------------------------------------------------------
+	
+	public static void TestNextPk() throws ApplicationException, Exception {
+		
+		CollegeModel model = new CollegeModel();
+		
+		int i = model.nextPk();
+		
+		System.out.println("Next pk is => " + i);
+	}
+//---------------------------------------------------------------
+	
+	public static void testAdd() throws ApplicationException, SQLException, DatabaseException, DuplicateRecordException, RecordNotFoundException {
+		
+		CollegeBean bean = new CollegeBean();
+		
+		 bean.setName("Chrayu");
+         bean.setAddress("indore");
+         bean.setState("mp");
+         bean.setCity("indore");
+         bean.setPhoneNo("073124246");
+         bean.setCreatedBy("Admin");
+         bean.setModifiedBy("Admin");
+         bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+         bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+         
+         CollegeModel model = new CollegeModel();
+         model.add(bean);
+	}
+
+}

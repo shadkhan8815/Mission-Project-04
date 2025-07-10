@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="in.co.rays.controller.BaseCtl"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.jdbc.JdbcConnection"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Result"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.SearchControls"/>
+    <fullyQualifiedTypeName name="in.co.rays.exception.RecordNotFoundException"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.CollegeModel"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.CollegeBean"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.StudentModel"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.UserBean"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.UserModel"/>
+    <fullyQualifiedTypeName name="in.co.rays.util.JDBCDataSource"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="in.co.rays.exception.DuplicateRecordException"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.StudentBean"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="in.co.rays.exception.DatabaseException"/>
+    <fullyQualifiedTypeName name="in.co.rays.exception.ApplicationException"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.CourseBean"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.CourseModel"/>
+    <fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.Iterator"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.FacultyBean"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.FacultyModel"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.MarksheetModel"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.SubjectBean"/>
+    <fullyQualifiedTypeName name="in.co.rays.model.SubjectModel"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="in.co.rays.bean.MarksheetBean"/>
+</qualifiedTypeNameHistroy>

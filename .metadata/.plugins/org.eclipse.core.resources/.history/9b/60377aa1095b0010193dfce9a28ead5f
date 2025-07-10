@@ -1,0 +1,85 @@
+package in.co.rays.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.cj.xdevapi.Result;
+
+import in.co.rays.bean.CollegeBean;
+import in.co.rays.exception.ApplicationException;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.util.JDBCDataSource;
+
+public class CollegeModel {
+
+	public Integer nextPk() throws ApplicationException, SQLException {
+		 
+		Connection conn = null ;
+		
+		int pk = 0 ;
+		
+		try {
+			conn = JDBCDataSource.getConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement("select max(id) from st_college");
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				rs.getLong(1);
+			}
+			rs.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			throw new ApplicationException("Exception : " + e.getMessage());
+		}finally {
+			conn.close();
+			JDBCDataSource.closeConnection(conn);
+		}
+		return pk + 1;
+		
+	}
+//-----------------------------------------------------------------------------------
+	
+	public long add (CollegeBean bean) throws ApplicationException, SQLException, DatabaseException {
+	
+		Connection conn = null ;
+		int pk = nextPk();
+		
+		try {
+			conn = JDBCDataSource.getConnection();
+			
+			PreparedStatement pstmt = conn.prepareStatement("insert into st_college values(?,?,?,?,?,?,?,?,?,?)");
+			
+			pstmt.setInt(1, pk);
+			pstmt.setString(2, bean.getName());
+			pstmt.setString(3, bean.getAddress());
+			pstmt.setString(4, bean.getState());
+			pstmt.setString(5, bean.getCity());
+			pstmt.setString(6, bean.getPhoneNo());
+			pstmt.setString(7, bean.getCreatedBy());
+			pstmt.setString(8, bean.getModifiedBy());
+			pstmt.setTimestamp(9, bean.getCreatedDatetime());
+			pstmt.setTimestamp(10, bean.getModifiedDatetime()); 
+			
+			int i = pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+			System.out.println("Data inserted => " + i);
+			
+		} catch (Exception e) {
+			
+			throw new DatabaseException("Exception : " + e.getMessage());
+			
+		}finally {
+			conn.close();
+			JDBCDataSource.closeConnection(conn);
+		}
+		return pk + 1;
+	}
+	
+}

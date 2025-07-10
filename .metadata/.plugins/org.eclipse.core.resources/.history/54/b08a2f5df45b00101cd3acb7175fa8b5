@@ -1,0 +1,53 @@
+package in.co.rays.test;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+import in.co.rays.bean.UserBean;
+import in.co.rays.exception.ApplicationException;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.exception.DuplicateRecordException;
+import in.co.rays.model.UserModel;
+
+public class TestUserModel {
+	
+	public static void main(String[] args) throws DatabaseException, ApplicationException, DuplicateRecordException {
+		
+           //testNextPk();
+		    testAdd();
+	}
+//---------------------------------------------------------------------------
+	
+	public static void testNextPk() throws DatabaseException {
+		
+		UserModel model = new UserModel();
+		
+		int i = model.nextPK();
+		
+		System.out.println("Next pk is => " + i);
+	}
+//---------------------------------------------------------------------
+	
+	public static void testAdd() throws ApplicationException, DuplicateRecordException {
+		
+		UserBean bean = new UserBean() ;
+		
+		bean.setFirstName("raghu");
+		bean.setLastName("parmar");
+		bean.setLogin("raghu@gmail.com");
+		bean.setPassword("1234");
+		bean.setDob(new Date());
+		bean.setMobileNo("9998890811");
+		bean.setRoleId(2);
+		bean.setGender("male");
+		bean.setCreatedBy("admin@gmail.com");
+		bean.setModifiedBy("admin@gmail.com");
+		bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+		
+		UserModel model = new UserModel();
+		model.add(bean);
+				
+	}
+
+}

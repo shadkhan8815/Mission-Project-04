@@ -1,0 +1,24 @@
+package in.co.rays.test;
+
+import java.sql.SQLException;
+
+import in.co.rays.exception.ApplicationException;
+import in.co.rays.model.CollegeModel;
+
+public class TestCollegeModel {
+	
+	public static void main(String[] args) {
+		
+	}
+//--------------------------------------------------------
+	
+	public static void TestNextPk() throws ApplicationException, SQLException {
+		
+		CollegeModel model = new CollegeModel();
+		
+		int i = model.nextPk();
+		
+		System.out.println("Next pk is => " + i);
+	}
+
+}

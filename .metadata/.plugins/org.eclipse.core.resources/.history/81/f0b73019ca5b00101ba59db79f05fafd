@@ -1,0 +1,24 @@
+package in.co.rays.test;
+
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.model.StudentModel;
+
+public class TestStudentModel {
+	
+	public static void main(String[] args) throws DatabaseException {
+		
+		testNextPk();
+		
+	}
+//------------------------------------------------------------
+	
+public static void testNextPk() throws DatabaseException {	
+	
+	StudentModel model = new StudentModel();
+	
+	int i = model.nextPK();
+	
+	System.out.println("Next pk is => " + i);
+}
+
+}

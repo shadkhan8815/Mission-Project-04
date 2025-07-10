@@ -1,0 +1,161 @@
+package in.co.rays.test;
+
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import in.co.rays.bean.CollegeBean;
+import in.co.rays.exception.ApplicationException;
+import in.co.rays.exception.DatabaseException;
+import in.co.rays.exception.DuplicateRecordException;
+import in.co.rays.exception.RecordNotFoundException;
+import in.co.rays.model.CollegeModel;
+
+public class TestCollegeModel {
+	
+	public static void main(String[] args) throws Exception, Exception {
+		
+		//TestNextPk();
+		//testAdd();
+		//testUpdate();
+		//testDelete();
+		//testSearch();
+		//testFindByPk();
+		testFindByName();
+		
+	}
+//--------------------------------------------------------
+	
+	public static void TestNextPk() throws ApplicationException, Exception {
+		
+		CollegeModel model = new CollegeModel();
+		
+		int i = model.nextPk();
+		
+		System.out.println("Next pk is => " + i);
+	}
+//---------------------------------------------------------------
+	
+	public static void testAdd() throws ApplicationException, SQLException, DatabaseException, DuplicateRecordException, RecordNotFoundException {
+		
+		CollegeBean bean = new CollegeBean();
+		
+		 bean.setName("Chrayu");
+         bean.setAddress("indore");
+         bean.setState("mp");
+         bean.setCity("indore");
+         bean.setPhoneNo("073124246");
+         bean.setCreatedBy("Admin");
+         bean.setModifiedBy("Admin");
+         bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+         bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+         
+         CollegeModel model = new CollegeModel();
+         model.add(bean);
+	}
+//----------------------------------------------------------------------------------
+	
+	public static void testUpdate() throws DatabaseException, DuplicateRecordException, SQLException, RecordNotFoundException {
+		
+		CollegeBean bean = new CollegeBean();
+		
+		bean.setId(1);
+		bean.setName("iim");
+        bean.setAddress("indore");
+        bean.setState("mp");
+        bean.setCity("indore");
+        bean.setPhoneNo("073124246");
+        bean.setCreatedBy("Admin");
+        bean.setModifiedBy("Admin");
+        bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
+        bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
+        
+        CollegeModel model = new CollegeModel();
+        model.update(bean);
+	}
+//-----------------------------------------------------------------------------------------------------------	
+	
+	public static void testDelete() throws ApplicationException, RecordNotFoundException, SQLException {
+		
+		CollegeModel model = new CollegeModel();
+		 model.delete(1);
+	}
+//------------------------------------------------------------------------------------
+	
+	public static void testSearch() throws RecordNotFoundException, Exception {
+		
+		CollegeModel model = new CollegeModel();
+		
+		CollegeBean bean = new CollegeBean();
+		
+		List list = model.search(bean, 1, 10);
+		
+		Iterator it = list.iterator();
+		
+		while (it.hasNext()) {
+			 bean = (CollegeBean) it.next();
+			 
+             System.out.println(bean.getId());
+             System.out.print("\t"+bean.getName());
+             System.out.print("\t"+bean.getAddress());
+             System.out.print("\t"+bean.getState());
+             System.out.print("\t"+bean.getCity());
+             System.out.print("\t"+bean.getPhoneNo());
+             System.out.print("\t"+bean.getCreatedBy());
+             System.out.print("\t"+bean.getCreatedDatetime());
+             System.out.print("\t"+bean.getModifiedBy());
+             System.out.println("\t"+bean.getModifiedDatetime());
+			
+		}
+			
+		}
+//------------------------------------------------------------------------------------
+	
+	public static void testFindByPk() throws RecordNotFoundException, Exception {
+		
+		CollegeModel model = new CollegeModel();
+		
+		CollegeBean bean = model.findByPk(1);
+		
+		if (bean != null) {
+
+            System.out.println(bean.getId());
+            System.out.print("\t"+bean.getName());
+            System.out.print("\t"+bean.getAddress());
+            System.out.print("\t"+bean.getState());
+            System.out.print("\t"+bean.getCity());
+            System.out.print("\t"+bean.getPhoneNo());
+            System.out.print("\t"+bean.getCreatedBy());
+            System.out.print("\t"+bean.getCreatedDatetime());
+            System.out.print("\t"+bean.getModifiedBy());
+            System.out.println("\t"+bean.getModifiedDatetime());
+			
+		}
+	}
+//---------------------------------------------------------------------------
+	
+	public static void testFindByName() throws RecordNotFoundException {
+		
+		CollegeModel model = new CollegeModel();
+		
+		CollegeBean bean = model.findByName("Chrayu");
+		
+		if (bean != null) {
+
+            System.out.println(bean.getId());
+            System.out.print("\t"+bean.getName());
+            System.out.print("\t"+bean.getAddress());
+            System.out.print("\t"+bean.getState());
+            System.out.print("\t"+bean.getCity());
+            System.out.print("\t"+bean.getPhoneNo());
+            System.out.print("\t"+bean.getCreatedBy());
+            System.out.print("\t"+bean.getCreatedDatetime());
+            System.out.print("\t"+bean.getModifiedBy());
+            System.out.println("\t"+bean.getModifiedDatetime());
+			
+		}
+	}
+		
+	}
