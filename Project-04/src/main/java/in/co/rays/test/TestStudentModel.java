@@ -17,9 +17,9 @@ public class TestStudentModel {
 		//testNextPk();
 		//testAdd();
 		//testUpdate();
-	//	testSearch();
+		testSearch();
 //		testFindByPk();
-		testFindByEmail();
+	//	testFindByEmail();
 	
 	}
 //------------------------------------------------------------

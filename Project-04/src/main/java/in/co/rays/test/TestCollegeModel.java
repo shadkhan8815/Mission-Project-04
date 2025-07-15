@@ -20,8 +20,8 @@ public class TestCollegeModel {
 		//TestNextPk();
 		//testAdd();
 		//testUpdate();
-		//testDelete();
-		//testSearch();
+		//testDelete()
+		testSearch();
 		//testFindByPk();
 		//testFindByName();
 		

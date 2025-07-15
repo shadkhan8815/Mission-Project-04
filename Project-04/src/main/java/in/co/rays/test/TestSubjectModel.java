@@ -12,9 +12,9 @@ public class TestSubjectModel {
 	
 	public static void main(String[] args) throws Exception {
 	//	testAdd();
-	//	testSearch();
+		testSearch();
 	//	testUpdate();
-		testFindByName();
+	//	testFindByName();
 	}
 	
 

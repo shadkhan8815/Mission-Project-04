@@ -14,7 +14,7 @@ public class TestTimetableModel {
 		//testAdd();
 		//testUpdate();
 	//	testFindByPk();
-		//testSearch();
+		testSearch();
 	}
 	
 	public static void testAdd() throws Exception {

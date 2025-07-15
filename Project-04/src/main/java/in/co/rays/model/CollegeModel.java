@@ -235,9 +235,9 @@ public class CollegeModel {
 				bean.setCreatedDatetime(rs.getTimestamp(9));
 				bean.setModifiedDatetime(rs.getTimestamp(10));
 
+				list.add(bean);
 			}
 			
-			list.add(bean);
 			rs.close();
 			pstmt.close();
 			

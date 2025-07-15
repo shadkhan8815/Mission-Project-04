@@ -18,10 +18,10 @@ public class TestUserModel {
            //testNextPk();
 		   // testAdd();
 	//	testUpdate();
-		  //  testSearch();
+		    testSearch();
 		//testFindByPk();
 	//	testFindByLogin();
-		testAuthenticate();
+	//	testAuthenticate();
 	}
 //---------------------------------------------------------------------------
 	public static void testAdd() throws Exception {

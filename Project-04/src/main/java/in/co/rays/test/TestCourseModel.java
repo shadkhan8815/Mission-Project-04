@@ -17,7 +17,7 @@ public class TestCourseModel {
 		//testDelete();
 		//testFindByPk();
 		//testFindByName();
-		//testSearch();
+		testSearch();
 	}
 //------------------------------------------------------------------
 	public static void testAdd() throws Exception {

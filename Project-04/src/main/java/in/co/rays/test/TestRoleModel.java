@@ -16,7 +16,7 @@ public class TestRoleModel {
 		// testDelete();
 		// testFindByPk();
 	    // testFindByName();
-		// testSearch();
+		 testSearch();
 	}
 //--------------------------------------------------------	
 

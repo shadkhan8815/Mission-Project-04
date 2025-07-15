@@ -14,7 +14,7 @@ public class TestFacultyModel {
 		//testAdd();
 		//testUpdate();
 //		testFindByPk();
-//		testSearch();
+		testSearch();
 //		testFindByEmail();
 //		testDelete();
 		

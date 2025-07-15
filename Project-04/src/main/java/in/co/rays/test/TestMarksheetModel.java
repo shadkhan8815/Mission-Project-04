@@ -12,10 +12,10 @@ public class TestMarksheetModel {
 	
 	public static void main(String[] args) throws Exception {
 		//testAdd();
-		//testSearch();
+		testSearch();
 		//testUpdate();
 		//testFindByPk();
-		testFindByRollNo();
+		//testFindByRollNo();
 	}
 	
 	public static void testAdd() throws Exception {
