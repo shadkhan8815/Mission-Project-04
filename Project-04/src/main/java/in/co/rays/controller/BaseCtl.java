@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.BaseBean;
+import in.co.rays.bean.UserBean;
 import in.co.rays.util.DataUtility;
 import in.co.rays.util.DataValidator;
 import in.co.rays.util.ServletUtility;
@@ -45,7 +46,37 @@ public abstract class BaseCtl extends HttpServlet {
 	}
 
 	protected BaseBean populateDTO(BaseBean dto, HttpServletRequest request) {
-		return null;
+		System.out.println("BaseCtl populateDTO run");
+		
+		String createdBy = request.getParameter("createdBy");
+		String modifiedBy = null;
+
+		UserBean userbean = (UserBean) request.getSession().getAttribute("user");
+
+		if (userbean == null) {
+			createdBy = "root";
+			modifiedBy = "root";
+		} else {
+			modifiedBy = userbean.getLogin();
+			if ("null".equalsIgnoreCase(createdBy) || DataValidator.isNull(createdBy)) {
+				createdBy = modifiedBy;
+			}
+		}
+
+		dto.setCreatedBy(createdBy);
+		dto.setModifiedBy(modifiedBy);
+
+		long cdt = DataUtility.getLong(request.getParameter("createdDatetime"));
+
+		if (cdt > 0) {
+			dto.setCreatedDatetime(DataUtility.getTimestamp(cdt));
+		} else {
+			dto.setCreatedDatetime(DataUtility.getCurrentTimestamp());
+		}
+
+		dto.setModifiedDatetime(DataUtility.getCurrentTimestamp());
+
+		return dto;
 	}
 
 	@Override
@@ -56,11 +87,13 @@ public abstract class BaseCtl extends HttpServlet {
 		preload(request);
 
 		String op = DataUtility.getString(request.getParameter("operation"));
-		System.out.println("oper : " + op);
+		System.out.println("Operation : " + op);
 
 		if (DataValidator.isNotNull(op) && !OP_CANCEL.equalsIgnoreCase(op) && !OP_VIEW.equalsIgnoreCase(op)
 				&& !OP_DELETE.equalsIgnoreCase(op) && !OP_RESET.equalsIgnoreCase(op)) {
-			System.out.println("basctl validate");
+			
+			System.out.println("BaseCtl validate run");
+			
 			if (!validate(request)) {
 				BaseBean bean = (BaseBean) populateBean(request);
 				ServletUtility.setBean(bean, request);
@@ -70,6 +103,7 @@ public abstract class BaseCtl extends HttpServlet {
 		}
 
 		// Pass the request to the appropriate HTTP method (GET/POST)
+		System.out.println("BaseCtl super service Run");
 		super.service(request, response);
 	}
 

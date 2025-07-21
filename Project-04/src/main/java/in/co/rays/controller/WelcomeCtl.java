@@ -7,26 +7,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/WelcomeCtl")
+import in.co.rays.util.ServletUtility;
+
+@WebServlet(name = "WelcomeCtl", urlPatterns = {"/WelcomeCtl"})
 public class WelcomeCtl extends BaseCtl{
 	
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		    System.out.println("WelcomeCtl doGet Run");
 		
+		    ServletUtility.forward(getView(), request, response);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		    System.out.println("WelcomeCtl doPost Run");
 		
 	}
 	
 	@Override
 	protected String getView() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return ORSView.WELCOME_VIEW ;
+			}
 
 }
