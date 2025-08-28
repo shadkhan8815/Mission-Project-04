@@ -59,14 +59,16 @@ public class TestMarksheetModel {
 
 	public static void testDelete() throws Exception {
 		MarksheetModel model = new MarksheetModel();
-		model.delete(1);
+		MarksheetBean bean = new MarksheetBean();
+		bean.setId(1);
+		model.delete(bean);
 	}
 
 	public static void testFindByPk() throws Exception {
 
 		MarksheetModel model = new MarksheetModel();
 
-		MarksheetBean bean = model.findByPK(1);
+		MarksheetBean bean = model.findByPk(1);
 
 		if (bean != null) {
 			System.out.print(bean.getId());

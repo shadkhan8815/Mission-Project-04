@@ -2,51 +2,118 @@ package in.co.rays.bean;
 
 import java.sql.Timestamp;
 
+/**
+ * Abstract base bean class that contains common audit fields.
+ * All beans should extend this class.
+ * Implements {@link DropdownListBean}.
+ * 
+ * @author  shad
+ * @version 1.0
+ */
 public abstract class BaseBean implements DropdownListBean {
 
-	protected long id;
-	protected String createdBy;
-	protected String modifiedBy;
-	protected Timestamp createdDatetime;
-	protected Timestamp modifiedDatetime;
+    /** Primary key ID of the bean */
+    protected long id;
 
-	public long getId() {
-		return id;
-	}
+    /** User who created the record */
+    protected String createdBy;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    /** User who last modified the record */
+    protected String modifiedBy;
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    /** Timestamp when the record was created */
+    protected Timestamp createdDatetime;
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    /** Timestamp when the record was last modified */
+    protected Timestamp modifiedDatetime;
 
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
+    /**
+     * Gets the ID of the bean.
+     * 
+     * @return the ID
+     */
+    public long getId() {
+        return id;
+    }
 
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
+    /**
+     * Sets the ID of the bean.
+     * 
+     * @param id the ID to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public Timestamp getCreatedDatetime() {
-		return createdDatetime;
-	}
+    /**
+     * Gets the user who created the record.
+     * 
+     * @return the creator's username
+     */
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
-	public void setCreatedDatetime(Timestamp createdDatetime) {
-		this.createdDatetime = createdDatetime;
-	}
+    /**
+     * Sets the user who created the record.
+     * 
+     * @param createdBy the creator's username
+     */
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
-	public Timestamp getModifiedDatetime() {
-		return modifiedDatetime;
-	}
+    /**
+     * Gets the user who last modified the record.
+     * 
+     * @return the username of the last modifier
+     */
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
 
-	public void setModifiedDatetime(Timestamp modifiedDatetime) {
-		this.modifiedDatetime = modifiedDatetime;
-	}
+    /**
+     * Sets the user who last modified the record.
+     * 
+     * @param modifiedBy the username of the last modifier
+     */
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    /**
+     * Gets the timestamp when the record was created.
+     * 
+     * @return the creation timestamp
+     */
+    public Timestamp getCreatedDatetime() {
+        return createdDatetime;
+    }
+
+    /**
+     * Sets the timestamp when the record was created.
+     * 
+     * @param createdDatetime the creation timestamp
+     */
+    public void setCreatedDatetime(Timestamp createdDatetime) {
+        this.createdDatetime = createdDatetime;
+    }
+
+    /**
+     * Gets the timestamp when the record was last modified.
+     * 
+     * @return the modification timestamp
+     */
+    public Timestamp getModifiedDatetime() {
+        return modifiedDatetime;
+    }
+
+    /**
+     * Sets the timestamp when the record was last modified.
+     * 
+     * @param modifiedDatetime the modification timestamp
+     */
+    public void setModifiedDatetime(Timestamp modifiedDatetime) {
+        this.modifiedDatetime = modifiedDatetime;
+    }
 }

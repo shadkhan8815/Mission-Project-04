@@ -56,7 +56,9 @@ public class TestRoleModel {
 
 	public static void testDelete() throws Exception {
 		RoleModel model = new RoleModel();
-		model.delete(1);
+		RoleBean bean = new RoleBean();
+		bean.setId(1);
+		model.delete(bean);
 	}
 //------------------------------------------------------	
 

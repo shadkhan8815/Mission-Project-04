@@ -68,8 +68,10 @@ public class TestStudentModel {
 	public static void testDelete() throws Exception {
 
 		StudentModel model = new StudentModel();
+		StudentBean bean = new StudentBean();
+		bean.setId(1);
 
-		model.delete(1);
+		model.delete(bean);
 
 	}
 
@@ -102,7 +104,7 @@ public class TestStudentModel {
 
 		StudentModel model = new StudentModel();
 
-		StudentBean bean = model.findByEmail("test@gmail.com");
+		StudentBean bean = model.findByEmailId("test@gmail.com");
 
 		if (bean != null) {
 			System.out.print(bean.getId());

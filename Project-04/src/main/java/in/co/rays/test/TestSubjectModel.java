@@ -55,7 +55,9 @@ public class TestSubjectModel {
 	public static void testDelete() throws Exception {
 
 		SubjectModel model = new SubjectModel();
-		model.delete(2);
+		SubjectBean bean = new SubjectBean();
+		bean.setId(1);
+		model.delete(bean);
 	}
 
 	public static void testFindByPk() throws Exception {

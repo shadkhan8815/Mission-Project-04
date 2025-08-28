@@ -2,90 +2,217 @@ package in.co.rays.bean;
 
 import java.util.Date;
 
+/**
+ * StudentBean is a JavaBean class that represents the details of a student.
+ * It extends {@link BaseBean} and stores information such as name, date of birth,
+ * gender, contact details, and associated college information.
+ * 
+ * @author Shad Khan
+ * @version 1.0
+ */
 public class StudentBean extends BaseBean {
 
-	private String firstName;
-	private String lastName;
-	private Date dob;
-	private String gender;
-	private String mobileNo;
-	private String email;
-	private long collegeId;
-	private String collegeName;
+    /**
+     * First name of the student.
+     */
+    private String firstName;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    /**
+     * Last name of the student.
+     */
+    private String lastName;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    /**
+     * Date of birth of the student.
+     */
+    private Date dob;
 
-	public String getLastName() {
-		return lastName;
-	}
+    /**
+     * Gender of the student.
+     */
+    private String gender;
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    /**
+     * Mobile number of the student.
+     */
+    private String mobileNo;
 
-	public Date getDob() {
-		return dob;
-	}
+    /**
+     * Email address of the student.
+     */
+    private String email;
 
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
+    /**
+     * ID of the associated college.
+     */
+    private long collegeId;
 
-	public String getGender() {
-		return gender;
-	}
+    /**
+     * Name of the associated college.
+     */
+    private String collegeName;
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    /**
+     * Gets the first name of the student.
+     * 
+     * @return first name
+     */
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getMobileNo() {
-		return mobileNo;
-	}
+    /**
+     * Sets the first name of the student.
+     * 
+     * @param firstName first name
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setMobileNo(String mobileNo) {
-		this.mobileNo = mobileNo;
-	}
+    /**
+     * Gets the last name of the student.
+     * 
+     * @return last name
+     */
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * Sets the last name of the student.
+     * 
+     * @param lastName last name
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * Gets the date of birth of the student.
+     * 
+     * @return date of birth
+     */
+    public Date getDob() {
+        return dob;
+    }
 
-	public long getCollegeId() {
-		return collegeId;
-	}
+    /**
+     * Sets the date of birth of the student.
+     * 
+     * @param dob date of birth
+     */
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
 
-	public void setCollegeId(long collegeId) {
-		this.collegeId = collegeId;
-	}
+    /**
+     * Gets the gender of the student.
+     * 
+     * @return gender
+     */
+    public String getGender() {
+        return gender;
+    }
 
-	public String getCollegeName() {
-		return collegeName;
-	}
+    /**
+     * Sets the gender of the student.
+     * 
+     * @param gender gender
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setCollegeName(String collegeName) {
-		this.collegeName = collegeName;
-	}
+    /**
+     * Gets the mobile number of the student.
+     * 
+     * @return mobile number
+     */
+    public String getMobileNo() {
+        return mobileNo;
+    }
 
-	@Override
-	public String getKey() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * Sets the mobile number of the student.
+     * 
+     * @param mobileNo mobile number
+     */
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
 
-	@Override
-	public String getValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * Gets the email address of the student.
+     * 
+     * @return email address
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the email address of the student.
+     * 
+     * @param email email address
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets the college ID associated with the student.
+     * 
+     * @return college ID
+     */
+    public long getCollegeId() {
+        return collegeId;
+    }
+
+    /**
+     * Sets the college ID associated with the student.
+     * 
+     * @param collegeId college ID
+     */
+    public void setCollegeId(long collegeId) {
+        this.collegeId = collegeId;
+    }
+
+    /**
+     * Gets the name of the associated college.
+     * 
+     * @return college name
+     */
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    /**
+     * Sets the name of the associated college.
+     * 
+     * @param collegeName college name
+     */
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    /**
+     * Gets the unique key of this bean.
+     * 
+     * @return id of the bean as String
+     */
+    @Override
+    public String getKey() {
+        return id + "";
+    }
+
+    /**
+     * Gets the displayable value of this bean (student full name).
+     * 
+     * @return full name (first name + last name)
+     */
+    @Override
+    public String getValue() {
+        return firstName + "" + lastName;
+    }
 }

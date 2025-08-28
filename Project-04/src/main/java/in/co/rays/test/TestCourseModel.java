@@ -41,7 +41,7 @@ public class TestCourseModel {
 
 		CourseModel model = new CourseModel();
 
-		CourseBean bean = model.findByPK(1);
+		CourseBean bean = model.findByPk(1);
 		
 		bean.setName("BCA");
 		bean.setDuration("3 year");
@@ -58,7 +58,9 @@ public class TestCourseModel {
 
 	public static void testDelete() throws Exception {
 		CourseModel model = new CourseModel();
-		model.delete(1);
+		CourseBean bean = new CourseBean();
+		bean.setId(1);
+		model.delete(bean);
 	}
 //--------------------------------------------------------------------------
 	
@@ -66,7 +68,7 @@ public class TestCourseModel {
 
 		CourseModel model = new CourseModel();
 
-		CourseBean bean = model.findByPK(1);
+		CourseBean bean = model.findByPk(1);
 
 		if (bean != null) {
 			System.out.print(bean.getId());

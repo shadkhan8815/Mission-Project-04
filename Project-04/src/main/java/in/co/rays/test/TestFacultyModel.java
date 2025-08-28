@@ -68,8 +68,10 @@ public class TestFacultyModel {
 	public static void testDelete() throws Exception {
 
 		FacultyModel model = new FacultyModel();
+		FacultyBean bean = new FacultyBean();
+		bean.setId(1);
 
-		model.delete(1);
+		model.delete(bean);
 	}
 //--------------------------------------------------------------------------------
 	public static void testFindByPk() throws Exception {

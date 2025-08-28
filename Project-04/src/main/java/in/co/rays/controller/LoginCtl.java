@@ -19,13 +19,41 @@ import in.co.rays.util.DataValidator;
 import in.co.rays.util.PropertyReader;
 import in.co.rays.util.ServletUtility;
 
+/**
+ * LoginCtl is a controller responsible for handling login, logout, 
+ * and redirection to user registration. It validates login credentials, 
+ * authenticates the user via UserModel, manages session data, 
+ * and forwards or redirects to appropriate views based on operations.
+ * <p>
+ * Supported operations:
+ * <ul>
+ *   <li>Sign In</li>
+ *   <li>Sign Up</li>
+ *   <li>Logout</li>
+ * </ul>
+ * </p>
+ * 
+ * @author Shad Khan
+ * @version 1.0
+ */
 @WebServlet(name = "LoginCtl", urlPatterns = {"/LoginCtl"})
 public class LoginCtl extends BaseCtl {
 	
+	/** Constant for Sign In operation */
 	public static final String OP_SIGN_IN = "Sign In";
+	/** Constant for Sign Up operation */
 	public static final String OP_SIGN_UP = "Sign Up";
+	/** Constant for Logout operation */
 	public static final String OP_LOG_OUT = "Logout";
 	
+	/**
+	 * Validates user input during login. Ensures login ID and password are provided 
+	 * and that the login ID is a valid email format. 
+	 * Skip validation if the operation is Sign Up or Logout.
+	 *
+	 * @param request the HttpServletRequest containing user input
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 		System.out.println("LoginCtl validate Run");
@@ -35,9 +63,7 @@ public class LoginCtl extends BaseCtl {
 		String op = DataUtility.getString(request.getParameter("operation"));
 		
 		if (OP_SIGN_UP.equalsIgnoreCase(op) || OP_LOG_OUT.equalsIgnoreCase(op)) {
-			
 			return isValid ;
-			
 		}
 		
 		if (DataValidator.isNull(request.getParameter("login"))) {
@@ -60,6 +86,12 @@ public class LoginCtl extends BaseCtl {
 		return isValid ;
 	}
 	
+	/**
+	 * Populates a UserBean object with request parameters (id, login, password).
+	 *
+	 * @param request the HttpServletRequest containing form data
+	 * @return a populated UserBean object
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 		System.out.println("LoginCtl populateBean run");
@@ -73,6 +105,16 @@ public class LoginCtl extends BaseCtl {
 		return bean ;
 	}
 
+	/**
+	 * Handles HTTP GET requests. If the operation is Logout, 
+	 * invalidates the session and forwards to login view with a success message. 
+	 * Otherwise, simply forwards to the login view.
+	 *
+	 * @param request  the HttpServletRequest object
+	 * @param response the HttpServletResponse object
+	 * @throws ServletException if a servlet error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("LoginCtl doGet Run");
@@ -90,6 +132,16 @@ public class LoginCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests. Processes login authentication, 
+	 * user session creation, role assignment, and redirection. 
+	 * Also supports user registration redirection.
+	 *
+	 * @param request  the HttpServletRequest object
+	 * @param response the HttpServletResponse object
+	 * @throws ServletException if a servlet error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("LoginCtl doPost Run");
@@ -136,6 +188,11 @@ public class LoginCtl extends BaseCtl {
 		
 	}
 	
+	/**
+	 * Returns the path of the login view (JSP).
+	 *
+	 * @return the login view path as String
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.LOGIN_VIEW;

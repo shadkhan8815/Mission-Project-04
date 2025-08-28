@@ -57,7 +57,7 @@ public class TestCollegeModel {
 	}
 //----------------------------------------------------------------------------------
 	
-	public static void testUpdate() throws DatabaseException, DuplicateRecordException, SQLException, RecordNotFoundException {
+	public static void testUpdate() throws DatabaseException, DuplicateRecordException, SQLException, RecordNotFoundException, ApplicationException {
 		
 		CollegeBean bean = new CollegeBean();
 		
@@ -80,7 +80,9 @@ public class TestCollegeModel {
 	public static void testDelete() throws ApplicationException, RecordNotFoundException, SQLException {
 		
 		CollegeModel model = new CollegeModel();
-		 model.delete(1);
+		CollegeBean bean = new CollegeBean() ;
+		bean.setId(1);
+		 model.delete(bean);
 	}
 //------------------------------------------------------------------------------------
 	
@@ -136,7 +138,7 @@ public class TestCollegeModel {
 	}
 //---------------------------------------------------------------------------
 	
-	public static void testFindByName() throws RecordNotFoundException {
+	public static void testFindByName() throws RecordNotFoundException, ApplicationException {
 		
 		CollegeModel model = new CollegeModel();
 		

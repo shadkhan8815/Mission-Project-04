@@ -49,7 +49,7 @@ public class TestUserModel {
 
 		UserModel model = new UserModel();
 		
-		UserBean bean = model.findByPK(1);
+		UserBean bean = model.findByPk(1);
 		
 		bean.setFirstName("asthik");
 		bean.setLastName("sahu");
@@ -69,14 +69,14 @@ public class TestUserModel {
 
 	public static void testDelete() throws Exception {
 		UserModel model = new UserModel();
-		model.delete(1);
+		model.delete(null);
 	}
 
 	public static void testFindByPk() throws Exception {
 
 		UserModel model = new UserModel();
 
-		UserBean bean = model.findByPK(1);
+		UserBean bean = model.findByPk(1);
 
 		if (bean != null) {
 			System.out.print(bean.getId());
