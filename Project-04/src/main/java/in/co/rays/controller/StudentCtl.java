@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
  * @author Shad Khan
  * @version 1.0
  */
-@WebServlet(name = "/StudentCtl", urlPatterns = { "/StudentCtl" })
+@WebServlet(name = "/StudentCtl", urlPatterns = { "/ctl/StudentCtl" })
 public class StudentCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(StudentCtl.class);

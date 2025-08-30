@@ -10,14 +10,15 @@
 
 	<form action="<%=ORSView.LOGIN_CTL%>" method="post">
 		<%@ include file="Header.jsp"%>
-		
+
 		<jsp:useBean id="bean" class="in.co.rays.bean.UserBean"
 			scope="request"></jsp:useBean>
 
 
 		<div align="center">
 
-			<h1 align="center" style="margin-bottom: -15; color: navy">LOGIN VIEW</h1>
+			<h1 align="center" style="margin-bottom: -15; color: navy">LOGIN
+				VIEW</h1>
 
 			<div style="height: 15px; margin-bottom: 12px">
 				<H3 align="center">
@@ -77,11 +78,14 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td><a href="<%=ORSView.FORGET_PASSWORD_CTL%>"><b>Forget my password?</b></a>&nbsp;</td>
+					<td><a href="<%=ORSView.FORGET_PASSWORD_CTL%>"><b>Forget
+								my password?</b></a>&nbsp;</td>
 				</tr>
 			</table>
 		</div>
+
+		<input type="hidden" name="uri" value="<%=uri%>">
 	</form>
-	             <%@ include file="Footer.jsp" %>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

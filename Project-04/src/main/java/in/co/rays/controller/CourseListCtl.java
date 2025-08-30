@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
  * 
  * Author: Shad Khan Version: 1.0
  */
-@WebServlet(name = "/CourseListCtl", urlPatterns = { "/CourseListCtl" })
+@WebServlet(name = "/CourseListCtl", urlPatterns = { "/ctl/CourseListCtl" })
 public class CourseListCtl extends BaseCtl {
 
 	/** Logger for debug and error messages */

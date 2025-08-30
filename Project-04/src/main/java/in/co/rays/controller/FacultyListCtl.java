@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
  * Author: Shad Khan
  * Version: 1.0
  */
-@WebServlet(name = "/FacultyListCtl", urlPatterns = {"/FacultyListCtl"})
+@WebServlet(name = "/FacultyListCtl", urlPatterns = {"/ctl/FacultyListCtl"})
 public class FacultyListCtl extends BaseCtl {
 
     /** Logger for debug and error messages */

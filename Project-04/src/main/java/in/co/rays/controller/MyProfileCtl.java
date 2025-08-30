@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
  * @author Shad Khan
  * @version 1.0
  */
-@WebServlet(name = "MyProfileCtl", urlPatterns = { "/MyProfileCtl" })
+@WebServlet(name = "MyProfileCtl", urlPatterns = { "/ctl/MyProfileCtl" })
 public class MyProfileCtl extends BaseCtl {
 
     /** Logger instance for debugging and error logging */

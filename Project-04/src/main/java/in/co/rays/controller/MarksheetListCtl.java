@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import in.co.rays.bean.BaseBean;
 import in.co.rays.bean.MarksheetBean;
 import in.co.rays.exception.ApplicationException;
@@ -27,8 +29,14 @@ import in.co.rays.util.ServletUtility;
  * @author Shad Khan
  * @version 1.0
  */
-@WebServlet(name = "MarksheetListCtl", urlPatterns = { "/MarksheetListCtl" })
+@WebServlet(name = "MarksheetListCtl", urlPatterns = { "/ctl/MarksheetListCtl" })
 public class MarksheetListCtl extends BaseCtl {
+
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 1L;
+
+    /** The log object for logging debug and error messages. */
+    private static Logger log = Logger.getLogger(MarksheetListCtl.class);
 
     /**
      * Populates the {@link MarksheetBean} with request parameters.
@@ -39,12 +47,16 @@ public class MarksheetListCtl extends BaseCtl {
     @Override
     protected BaseBean populateBean(HttpServletRequest request) {
         System.out.println("MarksheetListCtl populateBean run");
+        log.debug("MarksheetListCtl populateBean started");
 
         MarksheetBean bean = new MarksheetBean();
 
         bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
         bean.setName(DataUtility.getString(request.getParameter("name")));
 
+        log.debug("MarksheetListCtl populateBean populated with RollNo=" 
+                + bean.getRollNo() + ", Name=" + bean.getName());
+        log.debug("MarksheetListCtl populateBean ended");
         return bean;
     }
 
@@ -61,6 +73,7 @@ public class MarksheetListCtl extends BaseCtl {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("MarksheetListCtl doGet run");
+        log.debug("MarksheetListCtl doGet started");
 
         int pageNo = 1;
         int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
@@ -73,7 +86,10 @@ public class MarksheetListCtl extends BaseCtl {
             List<MarksheetBean> next = model.search(bean, pageNo + 1, pageSize);
 
             if (list == null || list.isEmpty()) {
+                log.debug("No record found for given search criteria");
                 ServletUtility.setErrorMessage("No record found", request);
+            } else {
+                log.debug("Records fetched successfully, size: " + list.size());
             }
 
             ServletUtility.setList(list, request);
@@ -82,11 +98,15 @@ public class MarksheetListCtl extends BaseCtl {
             ServletUtility.setBean(bean, request);
             request.setAttribute("nextListSize", next.size());
 
+            log.debug("Forwarding to view: " + getView());
             ServletUtility.forward(getView(), request, response);
 
         } catch (ApplicationException e) {
+            log.error("ApplicationException in doGet: ", e);
             e.printStackTrace();
         }
+
+        log.debug("MarksheetListCtl doGet ended");
     }
 
     /**
@@ -102,6 +122,7 @@ public class MarksheetListCtl extends BaseCtl {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("MarksheetListCtl doPost run");
+        log.debug("MarksheetListCtl doPost started");
 
         List list = null;
         List next = null;
@@ -119,6 +140,7 @@ public class MarksheetListCtl extends BaseCtl {
         String[] ids = request.getParameterValues("ids");
 
         try {
+            log.debug("Operation received: " + op);
 
             if (OP_SEARCH.equalsIgnoreCase(op) || "Next".equalsIgnoreCase(op) || "Previous".equalsIgnoreCase(op)) {
 
@@ -130,6 +152,7 @@ public class MarksheetListCtl extends BaseCtl {
                     pageNo--;
                 }
             } else if (OP_NEW.equalsIgnoreCase(op)) {
+                log.debug("Redirecting to new Marksheet form");
                 ServletUtility.redirect(ORSView.MARKSHEET_CTL, request, response);
                 return;
             } else if (OP_DELETE.equalsIgnoreCase(op)) {
@@ -139,15 +162,19 @@ public class MarksheetListCtl extends BaseCtl {
                     for (String id : ids) {
                         deletebean.setId(DataUtility.getInt(id));
                         model.delete(deletebean);
+                        log.debug("Deleted Marksheet ID: " + id);
                         ServletUtility.setSuccessMessage("Marksheet is deleted successfully", request);
                     }
                 } else {
+                    log.debug("Delete operation failed: No record selected");
                     ServletUtility.setErrorMessage("Select at least one record", request);
                 }
             } else if (OP_RESET.equalsIgnoreCase(op)) {
+                log.debug("Reset operation performed");
                 ServletUtility.redirect(ORSView.MARKSHEET_LIST_CTL, request, response);
                 return;
             } else if (OP_BACK.equalsIgnoreCase(op)) {
+                log.debug("Back operation performed");
                 ServletUtility.redirect(ORSView.MARKSHEET_LIST_CTL, request, response);
                 return;
             }
@@ -157,6 +184,7 @@ public class MarksheetListCtl extends BaseCtl {
 
             if (!OP_DELETE.equalsIgnoreCase(op)) {
                 if (list == null || list.size() == 0) {
+                    log.debug("No record found for given search in doPost");
                     ServletUtility.setErrorMessage("No record found ", request);
                 }
             }
@@ -167,11 +195,16 @@ public class MarksheetListCtl extends BaseCtl {
             ServletUtility.setBean(bean, request);
             request.setAttribute("nextListSize", next.size());
 
+            log.debug("Forwarding to view: " + getView());
             ServletUtility.forward(getView(), request, response);
+
         } catch (ApplicationException e) {
+            log.error("ApplicationException in doPost: ", e);
             e.printStackTrace();
             return;
         }
+
+        log.debug("MarksheetListCtl doPost ended");
     }
 
     /**
@@ -181,6 +214,7 @@ public class MarksheetListCtl extends BaseCtl {
      */
     @Override
     protected String getView() {
+        log.debug("Returning view: " + ORSView.MARKSHEET_LIST_VIEW);
         return ORSView.MARKSHEET_LIST_VIEW;
     }  
 }

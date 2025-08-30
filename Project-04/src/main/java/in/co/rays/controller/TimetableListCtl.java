@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
  * Author: Shad Khan
  * Version: 1.0
  */
-@WebServlet(name = "TimetableListCtl", urlPatterns = { "/TimetableListCtl" })
+@WebServlet(name = "TimetableListCtl", urlPatterns = { "/ctl/TimetableListCtl" })
 public class TimetableListCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(TimetableListCtl.class);

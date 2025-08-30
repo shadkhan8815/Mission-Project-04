@@ -26,7 +26,7 @@ import org.apache.log4j.Logger;
  * Author: Shad Khan
  * Version: 1.0
  */
-@WebServlet(name = "/UserListCtl", urlPatterns = { "/UserListCtl" })
+@WebServlet(name = "/UserListCtl", urlPatterns = { "/ctl/UserListCtl" })
 public class UserListCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(UserListCtl.class);

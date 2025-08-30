@@ -31,7 +31,7 @@ import org.apache.log4j.Logger;
  * Author: Shad Khan
  * Version: 1.0
  */
-@WebServlet(name = "TimetableCtl", urlPatterns = { "/TimetableCtl" })
+@WebServlet(name = "TimetableCtl", urlPatterns = { "/ctl/TimetableCtl" })
 public class TimetableCtl extends BaseCtl {
 
     private static Logger log = Logger.getLogger(TimetableCtl.class);
