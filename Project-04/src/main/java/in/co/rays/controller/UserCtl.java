@@ -65,7 +65,7 @@ public class UserCtl extends BaseCtl {
     protected boolean validate(HttpServletRequest request) {
         log.debug("UserCtl validate run");
 
-        boolean pass = true;
+        boolean isValid = true;
 
         String login = request.getParameter("login");
         String dob = request.getParameter("dob");
@@ -73,76 +73,76 @@ public class UserCtl extends BaseCtl {
 
         if (DataValidator.isNull(request.getParameter("firstName"))) {
             request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isName(request.getParameter("firstName"))) {
             request.setAttribute("firstName", "Invalid First Name");
-            pass = false;
+            isValid = false;
         }
 
         if (DataValidator.isNull(request.getParameter("lastName"))) {
             request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isName(request.getParameter("lastName"))) {
             request.setAttribute("lastName", "Invalid Last Name");
-            pass = false;
+            isValid = false;
         }
 
         if (DataValidator.isNull(login)) {
             request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isEmail(login)) {
             request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
-            pass = false;
+            isValid = false;
         }
 
         if (DataValidator.isNull(password)) {
             request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isPasswordLength(password)) {
             request.setAttribute("password", "Password should be 8 to 12 characters");
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isPassword(password)) {
             request.setAttribute("password", "Must contain uppercase, lowercase, digit & special character");
-            pass = false;
+            isValid = false;
         }
 
         if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
             request.setAttribute("confirmPassword", PropertyReader.getValue("error.require", "Confirm Password"));
-            pass = false;
+            isValid = false;
         }
 
         if (DataValidator.isNull(request.getParameter("gender"))) {
             request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
-            pass = false;
+            isValid = false;
         }
         if (DataValidator.isNull(dob)) {
             request.setAttribute("dob", PropertyReader.getValue("error.require", "Date of Birth"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isDate(dob)) {
             request.setAttribute("dob", PropertyReader.getValue("error.date", "Date of Birth"));
-            pass = false;
+            isValid = false;
         }
         if (DataValidator.isNull(request.getParameter("roleId"))) {
             request.setAttribute("roleId", PropertyReader.getValue("error.require", "Role"));
-            pass = false;
+            isValid = false;
         }
         if (DataValidator.isNull(request.getParameter("mobileNo"))) {
             request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "MobileNo"));
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
             request.setAttribute("mobileNo", "Mobile No must have 10 digits");
-            pass = false;
+            isValid = false;
         } else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
             request.setAttribute("mobileNo", "Invalid Mobile No");
-            pass = false;
+            isValid = false;
         }
         if (!request.getParameter("password").equals(request.getParameter("confirmPassword"))
                 && !"".equals(request.getParameter("confirmPassword"))) {
             request.setAttribute("confirmPassword", "Password and Confirm Password must be Same!");
-            pass = false;
+            isValid = false;
         }
 
-        return pass;
+        return isValid;
     }
 
     /**

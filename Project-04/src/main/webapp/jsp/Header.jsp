@@ -11,16 +11,15 @@
 <link rel="icon" type="image/png"
 	href="<%=ORSView.APP_CONTEXT%>/img/logo.png" sizes="16x16" />
 
-<link rel="stylesheet" type="text/css"
-	href="/ORSProject4/css/angular-datepicker.css">
-
-<script type="text/javascript" src="/ORSProject4/js/angular.min.js"></script>
-
-<script type="text/javascript"
-	src="/ORSProject4/js/angular-locale_en.js"></script>
-<script type="text/javascript"
-	src="/ORSProject4/js/angular-datepicker.js"></script>
-<script type="text/javascript" src="/ORSProject4/js/index.js"></script>
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Include jQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<!-- Include jQuery UI CSS -->
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="/Project-04/js/checkbox.js"></script>
+<script src="/Project-04/js/datepicker.js"></script>
 </head>
 <body>
 	<%
