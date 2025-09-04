@@ -221,7 +221,6 @@ public class UserCtl extends BaseCtl {
 
             try {
                 long pk = model.add(bean);
-                bean.setId(pk);
                 ServletUtility.setBean(bean, request);
                 ServletUtility.setSuccessMessage("Data Saved Successfully", request);
                 log.debug("User saved successfully with ID: " + pk);
@@ -235,7 +234,12 @@ public class UserCtl extends BaseCtl {
                 log.error("DuplicateRecordException: Login Id already exists");
             }
 
-        } else if (OP_UPDATE.equalsIgnoreCase(op)) {
+        }else if (OP_RESET.equalsIgnoreCase(op)) {
+            ServletUtility.redirect(ORSView.USER_CTL, request, response);
+            return;
+        }
+
+        else if (OP_UPDATE.equalsIgnoreCase(op)) {
             UserBean bean = (UserBean) populateBean(request);
 
             try {
@@ -257,11 +261,7 @@ public class UserCtl extends BaseCtl {
             ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
             return;
 
-        } else if (OP_RESET.equalsIgnoreCase(op)) {
-            ServletUtility.redirect(ORSView.USER_CTL, request, response);
-            return;
-        }
-
+        } 
         ServletUtility.forward(getView(), request, response);
     }
 
