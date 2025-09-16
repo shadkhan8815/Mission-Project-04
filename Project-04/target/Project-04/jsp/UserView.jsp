@@ -34,7 +34,7 @@
 					if (bean != null && bean.getId() > 0) {
 				%>UPDATE<%
 					} else {
-				%>ADD<%
+				%>ADD1111<%
 					}
 				%>
 				USER
