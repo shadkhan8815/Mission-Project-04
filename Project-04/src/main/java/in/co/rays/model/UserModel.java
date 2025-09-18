@@ -96,6 +96,7 @@ public class UserModel {
 
         try {
             pk = nextPk();
+          // factory desing pattern...  
             conn = JDBCDataSource.getConnection();
             conn.setAutoCommit(false);
             PreparedStatement pstmt = conn

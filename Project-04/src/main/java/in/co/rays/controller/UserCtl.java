@@ -184,11 +184,10 @@ public class UserCtl extends BaseCtl {
             throws ServletException, IOException {
         log.debug("UserCtl doGet run");
 
-        String op = DataUtility.getString(request.getParameter("operation"));
         UserModel model = new UserModel();
         long id = DataUtility.getLong(request.getParameter("id"));
 
-        if (id > 0 || op != null) {
+        if (id > 0) {
             try {
                 UserBean bean = model.findByPk(id);
                 ServletUtility.setBean(bean, request);
@@ -220,10 +219,10 @@ public class UserCtl extends BaseCtl {
             UserBean bean = (UserBean) populateBean(request);
 
             try {
-                long pk = model.add(bean);
+                model.add(bean);
                 ServletUtility.setBean(bean, request);
                 ServletUtility.setSuccessMessage("Data Saved Successfully", request);
-                log.debug("User saved successfully with ID: " + pk);
+                log.debug("User saved successfully with ID: ");
             } catch (ApplicationException e) {
                 log.error("ApplicationException in saving user", e);
                 e.printStackTrace();

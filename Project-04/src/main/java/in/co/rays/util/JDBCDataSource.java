@@ -29,8 +29,10 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  * @author 
  * @version 1.0
  */
+// make class final so child can not be created..
 public final class JDBCDataSource {
 
+//	make a self type of private static variable that have one copy in their life time..
 	private static JDBCDataSource jds = null;
 
 	private ComboPooledDataSource cpds = null;
@@ -41,6 +43,7 @@ public final class JDBCDataSource {
 	 * Private constructor to initialize the C3P0 ComboPooledDataSource.
 	 * Loads database configuration from the resource bundle.
 	 */
+	// make constructor private so object can not be created..
 	private JDBCDataSource() {
 		try {
 			cpds = new ComboPooledDataSource();
@@ -61,6 +64,7 @@ public final class JDBCDataSource {
 	 *
 	 * @return JDBCDataSource instance
 	 */
+	// make getInstance method that returns instance of the class..
 	public static JDBCDataSource getInstance() {
 		if (jds == null) {
 			jds = new JDBCDataSource();

@@ -150,11 +150,16 @@ public class TestUserModel {
 	public static void testSearch() throws Exception {
 
 		UserBean bean = new UserBean();
-		// bean.setFirstName("k");
 
 		UserModel model = new UserModel();
+		
+		
 
-		List list = model.search(bean, 1, 0);
+		List list = model.search(bean, 1, 10);
+		
+		bean.setId(1);
+
+				
 
 		Iterator it = list.iterator();
 

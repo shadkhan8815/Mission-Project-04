@@ -19,6 +19,7 @@ import java.util.HashMap;
  * 
  * @author 
  */
+// Builder desing pattern..
 public class EmailBuilder {
 
     /**
