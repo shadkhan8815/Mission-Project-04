@@ -22,7 +22,7 @@
     <jsp:useBean id="bean" class="in.co.rays.bean.UserBean" scope="request"></jsp:useBean>
 
      <div align="center">
-        <h1 align="center" style="margin-bottom: -15; color: navy;">USER LIST1111</h1>
+        <h1 align="center" style="margin-bottom: -15; color: navy;">USER LIST</h1>
 
         <div style="height: 15px; margin-bottom: 12px">
             <h3><font color="red"><%=ServletUtility.getErrorMessage(request)%></font></h3>
