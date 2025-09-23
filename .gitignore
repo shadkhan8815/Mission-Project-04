@@ -1,0 +1,9 @@
+# Ignore MySQL runtime data and socket files
+Project-04/mysql-data/
+*.sock
+mysql.sock
+
+# optional commons
+*.log
+node_modules/
+.DS_Store
