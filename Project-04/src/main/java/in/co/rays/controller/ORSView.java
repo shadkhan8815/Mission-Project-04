@@ -103,6 +103,10 @@ public interface ORSView {
 
     /** Faculty list view */
     public String FACULTY_LIST_VIEW = PAGE_FOLDER + "/FacultyListView.jsp";
+    
+    public String PATIENT_VIEW = PAGE_FOLDER + "/PatientView.jsp";
+    
+    public String PATIENT_LIST_VIEW = PAGE_FOLDER + "/PatientListView.jsp";
 
 //-------------------------------------------------------
     
@@ -188,5 +192,8 @@ public interface ORSView {
 
     /** Controller for displaying the list of Faculties */
     public String FACULTY_LIST_CTL = APP_CONTEXT + "/ctl/FacultyListCtl";
-
+    
+    public String PATIENT_CTL = APP_CONTEXT + "/ctl/PatientCtl";
+    
+    public String PATIENT_LIST_CTL = APP_CONTEXT + "/ctl/PatientListCtl";
 }

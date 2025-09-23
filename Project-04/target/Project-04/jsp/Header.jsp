@@ -18,59 +18,30 @@
 <!-- Include jQuery UI CSS -->
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="/Project-04/js/checkbox.js"></script>
+<script src="/Project-04/js/checkbox11.js"></script>
 <script src="/Project-04/js/datepicker.js"></script>
 </head>
 <body>
 	<%
-		UserBean userBean = (UserBean) session.getAttribute("user");
-		boolean userLoggedIn = userBean != null;
-		String welcomeMsg = "Hi, ";
-		if (userLoggedIn) {
-			String role = (String) session.getAttribute("role");
-			welcomeMsg += userBean.getFirstName() + " (" + role + ")";
-		} else {
-			welcomeMsg += "Guest";
-		}
-	%>
+    UserBean userBean = (UserBean) session.getAttribute("user");
+%>
+<%
+    if (userBean != null) {
+%>
 
-	<table>
-		<tr>
-			<th></th>
-			<td width="90%"><a href="<%=ORSView.WELCOME_CTL%>">Welcome</b></a> |
-				<%
-				if (userLoggedIn) {
-			%> <a
-				href=" <%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>">Logout</b></a>
-
-				<%
-					} else {
-				%> <a href="<%=ORSView.LOGIN_CTL%>">Login</b></a> <%
- 	}
- %></td>
-			<td rowspan="2">
-				<h1 align="right">
-					<img src="<%=ORSView.APP_CONTEXT%>/img/customLogo.jpg" width="175"
-						height="50">
-				</h1>
-			</td>
-		</tr>
-
-		<tr>
-			<th></th>
-			<td>
-				<h3><%=welcomeMsg%></h3>
-			</td>
-		</tr>
-
-
-		<%
-			if (userLoggedIn) {
-		%>
-
-		<tr>
-			<td colspan="2">
-				<%
+<table width="100%" style="border-collapse: collapse;">
+    <tr>
+        <td style="text-align: left; vertical-align: middle;">
+            <h3>
+                Hi, <%=userBean.getFirstName()%> (<%=session.getAttribute("role")%>)
+            </h3>
+        </td>
+        <td style="text-align: right; vertical-align: middle;">
+            <img src="<%=ORSView.APP_CONTEXT%>/img/customLogo.jpg" width="175" height="50" alt="Logo">
+        </td>
+    </tr>
+</table>
+<%
 					if (userBean.getRoleId() == RoleBean.ADMIN) {
 				%> <a href="<%=ORSView.MY_PROFILE_CTL%>">My Profile</a> | <a
 				href="<%=ORSView.CHANGE_PASSWORD_CTL%>">Change Password</a> |<a
@@ -120,7 +91,6 @@
 				<%
 					}
 						if (userBean.getRoleId() == RoleBean.FACULTY) {
-							// System.out.println("======>><><>"+userBean.getRoleId());
 				%> <a href="<%=ORSView.MARKSHEET_CTL%>">Add Marksheet</a> | <a
 				href="<%=ORSView.MARKSHEET_LIST_CTL%>">Marksheet List</a> | <a
 				href="<%=ORSView.COLLEGE_LIST_CTL%>">College List</a> | <a
@@ -142,14 +112,26 @@
  	}
  %>
 
-			</td>
-
-		</tr>
-		<%
-			}
-		%>
-
-	</table>
-	<hr>
+   | <a href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>"><b>Logout</b></a>
+<%
+    } else {
+%>
+<table width="100%" style="border-collapse: collapse;">
+    <tr>
+        <td style="text-align: left; vertical-align: middle;">
+            <h3>Hi, Guest</h3>
+            <a href="<%=ORSView.WELCOME_CTL%>"><b>Welcome</b></a> |
+            <a href="<%=ORSView.LOGIN_CTL%>"><b>Login</b></a>
+        </td>
+        <td style="text-align: right; vertical-align: middle;">
+            <img src="<%=ORSView.APP_CONTEXT%>/img/customLogo.jpg" width="175" height="50" alt="Logo">
+        </td>
+    </tr>
+</table>
+<%
+    }
+%>
+<hr>
+                        <%@ include file="Footer.jsp" %>
 </body>
 </html>
