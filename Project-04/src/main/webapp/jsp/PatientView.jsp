@@ -7,7 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="in.co.rays.controller.ORSView"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +17,17 @@
 	href="<%=ORSView.APP_CONTEXT%>/img/logo.png" sizes="16x16" />
 </head>
 <body>
-      
-                <form action="<%=ORSView.PATIENT_CTL%>" method="post">
+
+	<form action="<%=ORSView.PATIENT_CTL%>" method="post">
+
+		<%
+			HashMap<String, String> Map = (HashMap<String, String>) request.getAttribute("map");
+		%>
 
 		<%@ include file="Header.jsp"%>
 
 		<jsp:useBean id="bean" class="in.co.rays.bean.PatientBean"
 			scope="request"></jsp:useBean>
-
-		<%
-			List<PatientBean> patientList = (List<PatientBean>) request.getAttribute("patientList");
-		%>
 
 		<div align="center">
 			<h1 align="center" style="margin-bottom: -15; color: navy">
@@ -65,25 +65,30 @@
 			<table>
 				<tr>
 					<th align="left">Name<span style="color: red">*</span></th>
-					<td><input type="text" name="name"
-						placeholder="Enter Name"
+					<td><input type="text" name="name" placeholder="Enter Name"
 						value="<%=DataUtility.getStringData(bean.getName())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("name", request)%></font></td>
 				</tr>
 				<tr>
 					<th align="left">Desease<span style="color: red">*</span></th>
-					<td><%=HTMLUtility.getList("desease", String.valueOf(bean.getId()), patientList)%></td>
+					<td>
+						<%
+							String diseaseDropdown = HTMLUtility.getList("desease", bean.getDesease(), Map);
+						%> <%=diseaseDropdown%>
+					</td>
+
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("desease", request)%></font></td>
 				</tr>
-				
+
 				<tr>
 					<th align="left">Date Of Visit<span style="width: 98%"
 						style="color: red">*</span></th>
-					<td><input type="text" id="udate" name="dateOfVisit" placeholder="Select Date Of Visit"
+					<td><input type="text" id="udate" name="dateOfVisit"
+						placeholder="Select Date Of Visit"
 						value="<%=DataUtility.getDateString(bean.getDateOfVisit())%>"></td>
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dateOfVisit", request)%></font></td>
 				</tr>
-				
+
 				<tr>
 					<th align="left">Mobile No<span style="color: red">*</span></th>
 					<td><input type="text" name="mobileNo" maxlength="10"
@@ -116,6 +121,6 @@
 			</table>
 		</div>
 	</form>
-	                       <%@ include file="Footer.jsp"%>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

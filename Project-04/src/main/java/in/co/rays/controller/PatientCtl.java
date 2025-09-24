@@ -1,6 +1,7 @@
 package in.co.rays.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,16 +24,15 @@ public class PatientCtl extends BaseCtl{
 	@Override
 	protected void preload(HttpServletRequest request) {
 		
-		PatientModel model = new PatientModel();
-		try {
-			List patientList = model.list();
-			
-			request.setAttribute("patientList", patientList);
+		HashMap<String, String> map = new HashMap<String, String>();
 
-		}catch (Exception e) {
-			
-		}
-		
+        map.put("Diabetes", "Diabetes");
+        map.put("Hypertension", "Hypertension");
+        map.put("Asthma", "Asthma");
+        map.put("Tuberculosis", "Tuberculosis");
+        map.put("Malaria", "Malaria");
+        
+        request.setAttribute("map", map);
 	}
 	
 	@Override
