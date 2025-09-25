@@ -49,7 +49,7 @@ public class PatientModel {
                     .prepareStatement("insert into st_patient values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pstmt.setInt(1, pk);
             pstmt.setString(2, bean.getName());
-            pstmt.setString(3, bean.getDesease());
+            pstmt.setString(3, bean.getDisease());
             pstmt.setString(4, bean.getMobileNo());
             pstmt.setDate(5,new java.sql.Date(bean.getDateOfVisit().getTime()));
             pstmt.setString(6, bean.getCreatedBy());
@@ -82,9 +82,9 @@ public class PatientModel {
 	            conn = JDBCDataSource.getConnection();
 	            conn.setAutoCommit(false);
 	            PreparedStatement pstmt = conn.prepareStatement(
-	                    "update st_patient set name = ?, desease = ?, mobileNo = ?, dob = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
+	                    "update st_patient set name = ?, disease = ?, mobileNo = ?, dob = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
 	            pstmt.setString(1, bean.getName());
-	            pstmt.setString(2, bean.getDesease());
+	            pstmt.setString(2, bean.getDisease());
 	            pstmt.setString(3, bean.getMobileNo());
 	            pstmt.setDate(4, new java.sql.Date(bean.getDateOfVisit().getTime()));
 	            pstmt.setString(5, bean.getCreatedBy());
@@ -152,7 +152,7 @@ public class PatientModel {
                 
                 bean.setId(rs.getLong(1));
                 bean.setName(rs.getString(2));
-                bean.setDesease(rs.getString(3));
+                bean.setDisease(rs.getString(3));
                 bean.setMobileNo(rs.getString(4));
                 bean.setDateOfVisit(rs.getDate(5));
                 bean.setCreatedBy(rs.getString(6));
@@ -179,7 +179,7 @@ public class PatientModel {
 	    Connection conn = null;
 	    ArrayList list = new ArrayList();
 
-	    StringBuffer sql = new StringBuffer("SELECT * FROM st_patient WHERE 1=1 ");
+	    StringBuffer sql = new StringBuffer("select * from st_patient where 1=1 ");
 
 	    if (bean != null) {
 	        if (bean.getId() > 0) {
@@ -188,8 +188,8 @@ public class PatientModel {
 	        if (bean.getName() != null && bean.getName().length() > 0) {
 	            sql.append(" AND name LIKE '" + bean.getName() + "%'");
 	        }
-	        if (bean.getDesease() != null && bean.getDesease().length() > 0) {
-	            sql.append(" AND desease LIKE '" + bean.getDesease() + "%'");
+	        if (bean.getDisease() != null && bean.getDisease().length() > 0) {
+	            sql.append(" AND disease LIKE '" + bean.getDisease() + "%'");
 	            System.out.println("i,m in search of patient");
 	        }
 	        if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
@@ -214,7 +214,7 @@ public class PatientModel {
 	            bean = new PatientBean();
 	            bean.setId(rs.getLong(1));
 	            bean.setName(rs.getString(2));
-	            bean.setDesease(rs.getString(3));
+	            bean.setDisease(rs.getString(3));
 	            bean.setMobileNo(rs.getString(4));
 	            bean.setDateOfVisit(rs.getDate(5));
 	            bean.setCreatedBy(rs.getString(6));

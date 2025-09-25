@@ -26,10 +26,11 @@ public class PatientCtl extends BaseCtl{
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 
-        map.put("Diabetes", "Diabetes");
+        map.put("Fever", "Fever");
         map.put("Hypertension", "Hypertension");
         map.put("Asthma", "Asthma");
-        map.put("Tuberculosis", "Tuberculosis");
+        map.put("Cold", "Tuberculosis");
+        map.put("Diabetes", "Malaria");
         map.put("Malaria", "Malaria");
         
         request.setAttribute("map", map);
@@ -48,8 +49,8 @@ public class PatientCtl extends BaseCtl{
             isValid = false;
         }
 
-        if (DataValidator.isNull(request.getParameter("desease"))) {
-            request.setAttribute("desease", PropertyReader.getValue("error.require", "desease"));
+        if (DataValidator.isNull(request.getParameter("disease"))) {
+            request.setAttribute("disease", PropertyReader.getValue("error.require", "disease"));
             isValid = false;
         } 
 
@@ -81,7 +82,7 @@ public class PatientCtl extends BaseCtl{
 		
 		 bean.setId(DataUtility.getLong(request.getParameter("id")));
 	        bean.setName(DataUtility.getString(request.getParameter("name")));
-	        bean.setDesease(DataUtility.getString(request.getParameter("desease")));
+	        bean.setDisease(DataUtility.getString(request.getParameter("disease")));
 	        bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
 	        bean.setDateOfVisit(DataUtility.getDate(request.getParameter("dateOfVisit")));
 

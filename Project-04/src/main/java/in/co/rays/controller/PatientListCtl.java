@@ -1,6 +1,8 @@
 package in.co.rays.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,8 +27,19 @@ public class PatientListCtl extends BaseCtl {
 		PatientModel model = new PatientModel();
 		try {
 			List patientList = model.list();
+			
+			HashMap diseaseMap = new HashMap();
+			
+			Iterator it = patientList.iterator();
+			
+			while (it.hasNext()) {
+				PatientBean bean = (PatientBean) it.next();
 
-			request.setAttribute("patientList", patientList);
+				diseaseMap.put(bean.getDisease(), bean.getDisease());
+
+			}
+
+			request.setAttribute("diseaseMap", diseaseMap);
 
 		} catch (Exception e) {
 
@@ -37,7 +50,7 @@ public class PatientListCtl extends BaseCtl {
 	protected BaseBean populateBean(HttpServletRequest request) {
 		PatientBean bean = new PatientBean();
 
-		bean.setDesease(DataUtility.getString(request.getParameter("desease")));
+		bean.setDisease(DataUtility.getString(request.getParameter("disease")));
 		bean.setName(DataUtility.getString(request.getParameter("name")));
 
 		populateDTO(bean, request);

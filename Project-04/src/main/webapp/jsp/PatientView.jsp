@@ -70,14 +70,14 @@
 					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("name", request)%></font></td>
 				</tr>
 				<tr>
-					<th align="left">Desease<span style="color: red">*</span></th>
+					<th align="left">disease<span style="color: red">*</span></th>
 					<td>
 						<%
-							String diseaseDropdown = HTMLUtility.getList("desease", bean.getDesease(), Map);
+							String diseaseDropdown = HTMLUtility.getList("disease", bean.getDisease(), Map);
 						%> <%=diseaseDropdown%>
 					</td>
 
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("desease", request)%></font></td>
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("disease", request)%></font></td>
 				</tr>
 
 				<tr>

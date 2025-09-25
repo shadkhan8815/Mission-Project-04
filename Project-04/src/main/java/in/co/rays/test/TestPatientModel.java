@@ -35,7 +35,7 @@ public class TestPatientModel {
 		PatientBean bean = new PatientBean();
 		
 		bean.setName("Prabhakar");
-		bean.setDesease("Cancer");
+		bean.setDisease("Cancer");
 		bean.setDateOfVisit(sdf.parse("23-09-2025"));
 		bean.setMobileNo("9998890811");
 		bean.setCreatedBy("admin@gmail.com");
@@ -55,7 +55,7 @@ public class TestPatientModel {
 		
 		bean.setId(1);
 		bean.setName("Aditya");
-		bean.setDesease("blurr vision");
+		bean.setDisease("blurr vision");
 		bean.setDateOfVisit(sdf.parse("23-09-2025"));
 		bean.setMobileNo("9998890811");
 		bean.setCreatedBy("admin@gmail.com");
@@ -81,7 +81,7 @@ public class TestPatientModel {
 		if (bean != null) {
 			System.out.print(bean.getId());
 			System.out.print("\t" + bean.getName());
-			System.out.print("\t" + bean.getDesease());
+			System.out.print("\t" + bean.getDisease());
 			System.out.print("\t" + bean.getMobileNo());
 			System.out.print("\t" + bean.getDateOfVisit());
 			System.out.print("\t" + bean.getCreatedBy());
@@ -106,7 +106,7 @@ public class TestPatientModel {
 	        bean = (PatientBean) it.next();
 	        System.out.print(bean.getId());
 	        System.out.print("\t" + bean.getName());
-	        System.out.print("\t" + bean.getDesease());
+	        System.out.print("\t" + bean.getDisease());
 	        System.out.print("\t" + bean.getMobileNo());
 	        System.out.print("\t" + bean.getDateOfVisit());
 	        System.out.print("\t" + bean.getCreatedBy());

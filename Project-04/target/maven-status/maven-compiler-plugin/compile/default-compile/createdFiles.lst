@@ -39,10 +39,13 @@ in\co\rays\test\TestTimetableModel.class
 in\co\rays\bean\DropdownListBean.class
 in\co\rays\bean\BaseBean.class
 in\co\rays\controller\MarksheetListCtl.class
+in\co\rays\test\TestPatientModel.class
 in\co\rays\util\JDBCDataSource.class
 in\co\rays\controller\CourseCtl.class
+in\co\rays\controller\PatientCtl.class
 in\co\rays\model\StudentModel.class
 in\co\rays\controller\StudentListCtl.class
+in\co\rays\bean\PatientBean.class
 in\co\rays\util\PropertyReader.class
 in\co\rays\controller\ForgetPasswordCtl.class
 in\co\rays\model\RoleModel.class
@@ -57,11 +60,13 @@ in\co\rays\controller\UserListCtl.class
 in\co\rays\controller\StudentCtl.class
 in\co\rays\test\TestCourseModel.class
 in\co\rays\controller\GetMarksheetCtl.class
+in\co\rays\model\PatientModel.class
 in\co\rays\controller\BaseCtl.class
 in\co\rays\controller\FacultyCtl.class
 in\co\rays\test\TestRoleModel.class
 in\co\rays\model\SubjectModel.class
 in\co\rays\controller\MarksheetCtl.class
+in\co\rays\controller\PatientListCtl.class
 in\co\rays\controller\CollegeCtl.class
 in\co\rays\test\TestMarksheetModel.class
 in\co\rays\controller\RoleListCtl.class

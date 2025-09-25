@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="in.co.rays.controller.PatientListCtl"%>
 <%@page import="in.co.rays.bean.PatientBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -36,7 +37,7 @@
                 int index = ((pageNo - 1) * pageSize) + 1;
                 int nextListSize = DataUtility.getInt(request.getAttribute("nextListSize").toString());
 
-                List<PatientBean> patientList = (List<PatientBean>) request.getAttribute("patientList");
+                       HashMap diseaseMap = (HashMap) request.getAttribute("diseaseMap");
                 List<PatientBean> list = (List<PatientBean>) ServletUtility.getList(request);
                 Iterator<PatientBean> it = list.iterator();
 
@@ -52,8 +53,8 @@
                         <label><b>Name :</b></label>
                         <input type="text" name="name" placeholder="Enter Name" value="<%=ServletUtility.getParameter("name", request)%>">&emsp;
 
-                        <label><b>Desease:</b></label>
-                   <%=HTMLUtility.getList("desease", String.valueOf(bean.getId()), patientList)%>&emsp;
+                        <label><b>disease:</b></label>
+                   <%=HTMLUtility.getList("disease", bean.getDisease(), diseaseMap)%>&emsp;
 
                         <input type="submit" name="operation" value="<%=PatientListCtl.OP_SEARCH%>">
                         &nbsp;
@@ -68,7 +69,7 @@
                     <th width="5%"><input type="checkbox" id="selectall" /></th>
                     <th width="5%">S.No</th>
                     <th width="13%">Name</th>
-                    <th width="13%">Desease</th>
+                    <th width="13%">disease</th>
                     <th width="10%">Mobile No</th>
                     <th width="10%">Date Of Visit</th>
                     <th width="5%">Edit</th>
@@ -89,7 +90,7 @@
                     </td>
                     <td style="text-align: center;"><%=index++%></td>
                     <td style="text-align: center; text-transform: capitalize;"><%=bean.getName()%></td>
-                    <td style="text-align: center; text-transform: capitalize;"><%=bean.getDesease()%></td>
+                    <td style="text-align: center; text-transform: capitalize;"><%=bean.getDisease()%></td>
                     <td style="text-align: center;"><%=bean.getMobileNo()%></td>
                     <td style="text-align: center;"><%=date%></td>
                     <td style="text-align: center;">

@@ -5,7 +5,7 @@ import java.util.Date;
 public class PatientBean extends BaseBean {
 	
 	private String name ;
-	private String desease ;
+	private String disease ;
 	private String mobileNo ;
 	private Date dateOfVisit ;
 	
@@ -18,12 +18,12 @@ public class PatientBean extends BaseBean {
 		this.name = name;
 	}
 
-	public String getDesease() {
-		return desease;
+	public String getDisease() {
+		return disease;
 	}
 
-	public void setDesease(String desease) {
-		this.desease = desease;
+	public void setDisease(String disease) {
+		this.disease = disease;
 	}
 
 	public String getMobileNo() {
@@ -44,12 +44,12 @@ public class PatientBean extends BaseBean {
 
 	@Override
 	public String getKey() {
-		return desease;
+		return disease;
 	}
 
 	@Override
 	public String getValue() {
-		return desease;
+		return disease;
 	}
 
 }
