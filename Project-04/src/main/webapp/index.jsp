@@ -23,7 +23,7 @@
 
 	<h1 align="center">
 		<font size="10px" color="red"><a
-			href="<%=ORSView.WELCOME_CTL%>">Online Result System</a> </font>
+			href="<%=ORSView.WELCOME_CTL%>">Online Result System12345</a> </font>
 	</h1>
 </body>
 </html>
